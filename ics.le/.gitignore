@@ -1,0 +1,5 @@
+.clasp.json
+package-lock.json
+deploy/gas/
+deploy/local/
+node_modules/

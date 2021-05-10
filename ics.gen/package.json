@@ -1,0 +1,52 @@
+{
+  "name": "ics-001",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gas": "rm deploy/gas/*.js && webpack --config ./server/webpack.gas.js ",
+    "build": "webpack --config ./client/webpack.dev.js ",
+    "local": "webpack-dev-server --config ./client/webpack.dev.js --open",
+    "prod": "webpack --config ./client/webpack.prod.js ",
+    "deploy": "npm run prod &&  npm run gas && cd deploy/gas  && clasp push && clasp deploy --deploymentId AKfycbyo3N1QZko-gc2moBPwwXjHFrvf9rpI6ditHSF7hBBTyVW3w2w",
+    "gaspull": "cd deploy/gas && clasp pull && rm lib.bundle.js && cp -f *.js ../../server/src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "autoprefixer": "^9.8.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
+    "gas-webpack-plugin": "^1.0.2",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.5.1",
+    "node-sass": "^4.14.1",
+    "popper.js": "^1.16.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.2",
+    "vue-router": "^3.2.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "core-js": "^2.6.11",
+    "element-ui": "^2.13.2",
+    "lodash": "^4.17.15",
+    "moment": "^2.25.3",
+    "vuex": "^3.4.0"
+  }
+}

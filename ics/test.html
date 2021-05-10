@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons"/>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"/>
+        <title>KasBON List Transaction</title>
+     <style>
+        .page-container {
+           max-width : 1360px;
+           padding-bottom: 100px;
+           margin: 0 auto 0;
+        }
+        .el-row { 
+           margin-bottom: 20px;
+           &:last-child {
+             margin-bottom: 0;
+           }
+        }
+        
+        .el-button {
+           margin : 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main" class="page-container">
+    <el-main v-loading="is_loading">
+       <el-row>
+       <el-card shadow="hover">
+       <el-button @click="actionA1">Action A1</el-button>
+       <el-button @click="actionA2" type="primary">Action A2</el-button>
+       <el-button @click="actionA3" type="success">Action A3</el-button>
+       <el-button @click="actionA4" type="info">Action A4</el-button>
+       <el-button @click="actionA5" type="warning">Action A5</el-button>
+       <el-button @click="actionA6" type="danger">Action A6</el-button>
+       </el-card>
+       </el-row>
+       
+       <el-row>
+       <el-card  shadow="hover">
+       <el-button @click="actionB1" plain>Action B1</el-button>
+       <el-button @click="actionB2" type="primary" plain>Action B2</el-button>
+       <el-button @click="actionB3" type="success" plain>Action B3</el-button>
+       <el-button @click="actionB4" type="info" plain>Action B4</el-button>
+       <el-button @click="actionB5" type="warning" plain>Action B5</el-button>
+       <el-button @click="actionB6" type="danger" plain>Action B6</el-button>
+       </el-card>
+       </el-row>
+       
+       <el-row>
+       <el-card shadow="hover">
+       <el-button @click="actionC1" round>Action C1</el-button>
+       <el-button @click="actionC2" type="primary" round>Action C2</el-button>
+       <el-button @click="actionC3" type="success" round>Action C3</el-button>
+       <el-button @click="actionC4" type="info" round>Action C4</el-button>
+       <el-button @click="actionC5" type="warning" round>Acis_loadingtion C5</el-button>
+       <el-button @click="actionC6" type="danger" round>Action C6</el-button>
+       </el-card>
+       </el-row>
+       
+       <el-row>
+       <el-card shadow="hover">
+       <el-button @click="actionD1" icon="el-icon-search" circle>Action D1</el-button>
+       <el-button @click="actionD2" type="primary" icon="el-icon-edit" circle>Action D2</el-button>
+       <el-button @click="actionD3" type="success" icon="el-icon-check" circle>Action D3</el-button>
+       <el-button @click="actionD4" type="info" icon="el-icon-message" circle>Action D4</el-button>
+       <el-button @click="actionD5" type="warning" icon="el-icon-star-off" circle>Action D5</el-button>
+       <el-button @click="actionD6" type="danger" icon="el-icon-delete" circle>Action D6</el-button>
+       </el-card>
+       </el-row>
+    </el-main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.13.2/lib/index.min.js"></script>
+    <script src="//unpkg.com/element-ui/lib/umd/locale/en.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+    
+    <script type="text/javascript">
+        "use strict"
+        ELEMENT.locale(ELEMENT.lang.en);
+        
+        function funcActionA1(){
+          var data = {
+             bal_number: null,
+             travel_design : "@icstravelgroup.com",
+             guest_name : "nama tamu",
+             booking_date : moment(new Date()).format("YYYY-MM-DD"),
+             total_pax : 4,
+             arrive_date :  moment(new Date()).format("YYYY-MM-DD"),
+             agent_name : "nama agen",
+             remark: "catatan",
+          }
+          try {
+          google.script.run.withSuccessHandler(function(res)
+			{ resolve(res); })
+			.withFailureHandler(google_run_failure).
+			BalID_createNew(data);
+          } catch(err){
+            google_run_failure(data);
+          }
+        }
+        
+        var google_run_failure ;
+        function funcActionA2(){
+           google.script.run.withSuccessHandler((res) =>  { 
+              this.is_loading=false;
+              this.form.bal_number = res;
+              console.log(res);
+           }).withFailureHandler((err) => {
+               this.$message({
+                  type: 'error',
+                  message: JSON.stringify(err)
+               }); 
+               }).BalID_generateID();
+        }
+        var //funcActionA2=funcActionA1,
+        funcActionA3=funcActionA1, funcActionA4=funcActionA1, funcActionA5=funcActionA1, funcActionA6=funcActionA1, 
+        funcActionB1=funcActionA1, funcActionB2=funcActionA1, funcActionB3=funcActionA1, funcActionB4=funcActionA1, funcActionB5=funcActionA1, funcActionB6=funcActionA1, 
+        funcActionC1=funcActionA1, funcActionC2=funcActionA1, funcActionC3=funcActionA1, funcActionC4=funcActionA1, funcActionC5=funcActionA1, funcActionC6=funcActionA1, 
+        funcActionD1=funcActionA1, funcActionD2=funcActionA1, funcActionD3=funcActionA1, funcActionD4=funcActionA1, funcActionD5=funcActionA1, funcActionD6=funcActionA1;
+        
+        var app = new Vue({
+            el: "#main",
+            data: {
+               form : {
+                 bal_number: null,
+                 travel_design : "@icstravelgroup.com",
+                 guest_name : "nama tamu",
+                 booking_date : new Date(),
+                 total_pax : 4,
+                 arrive_date : new Date(),
+                 agent_name : "nama agen",
+                 remark: "catatan",
+               },
+               is_loading : false,
+            },
+            computed : {
+              loading : function(){
+                return this.is_loading;
+              }
+            },
+            methods : {
+                actionA1: funcActionA1, actionA2: funcActionA2, actionA3: funcActionA3, actionA4: funcActionA4, actionA5: funcActionA5, actionA6: funcActionA6,
+                actionB1: funcActionB1, actionB2: funcActionB2, actionB3: funcActionB3, actionB4: funcActionB4, actionB5: funcActionB5, actionB6: funcActionB6,
+                actionC1: funcActionC1, actionC2: funcActionC2, actionC3: funcActionC3, actionC4: funcActionC4, actionC5: funcActionC5, actionC6: funcActionC6,
+                actionD1: funcActionD1, actionD2: funcActionD2, actionD3: funcActionD3, actionD4: funcActionD4, actionD5: funcActionD5, actionD6: funcActionD6,
+            },
+            created : function(){
+              this.is_loading=true;
+              google_run_failure = (err) => {
+                this.$message({
+                  type: 'error',
+                  message: JSON.stringify(err)
+                }); 
+              }
+              try {
+               google.script.run.withSuccessHandler((res) =>  { 
+                  this.is_loading=false;
+                  this.form.bal_number = res;
+                  console.log(res);
+               }).withFailureHandler(google_run_failure).BalID_generateID();
+               }catch (err){
+                 google_run_failure(JSON.stringify(err));
+               }
+            
+            }
+        });
+    </script>
+</body>
+</html>
